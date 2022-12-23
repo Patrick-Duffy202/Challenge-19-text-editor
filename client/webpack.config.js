@@ -20,34 +20,34 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin',
+        title: 'Text Editor',
       }),
+
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }), 
+
       new WebpackPwaManifest({
+          inject: true,
           name: 'Text Editor Application',
           short_name: 'Text Editor',
           description: 'Edit your text!',
-          background_color: '#7eb4e2',
-          theme_color: '#7eb4e2',
-          start_url: './',
-          publicPath: './',
+          background_color: '#31a9e1',
+          theme_color: '#31a9e1',
+          start_url: '/',
+          publicPath: '/',
           icons: [
             {
-              src: path.resolve('src/images/logo.png'),
-              sizes: [96, 128, 192, 256, 384, 512],
+              src: path.resolve('src/images/icon_144x144.ab7efc9f581cc30e64e4f939fafc9b57.png'),
+              sizes: [144],
+              purpose: 'any',
               destination: path.join('assets', 'icons'),
             },
-            {
-              src: path.resolve('src/images/logo.png'),
-              size: '1024x1024',
-              destination: path.join('assets', 'icons'),
-              purpose: 'maskable'
-            }
+            
           ],
         }), 
-        new InjectManifest({
-          swSrc: './sw.js',
-          swDest: 'service-worker.js',
-        }), 
+        
       ],
     module: {
       rules: [
@@ -57,7 +57,7 @@ module.exports = () => {
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
+          type: 'asset',
         },
         {
           test: /\.m?js$/,
