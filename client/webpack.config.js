@@ -29,7 +29,7 @@ module.exports = () => {
       }), 
 
       new WebpackPwaManifest({
-          inject: true,
+
           name: 'Text Editor Application',
           short_name: 'Text Editor',
           description: 'Edit your text!',
@@ -39,9 +39,8 @@ module.exports = () => {
           publicPath: '/',
           icons: [
             {
-              src: path.resolve('src/images/icon_144x144.ab7efc9f581cc30e64e4f939fafc9b57.png'),
-              sizes: [144],
-              purpose: 'any',
+              src: path.resolve('src/images/logo.png'),
+              sizes: [96],
               destination: path.join('assets', 'icons'),
             },
             
@@ -55,10 +54,7 @@ module.exports = () => {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset',
-        },
+      
         {
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
